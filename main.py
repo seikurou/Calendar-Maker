@@ -2,7 +2,7 @@ import argparse
 from docx import Document
 from docxcompose.composer import Composer
 from datetime import date as Date
-from monthlyLandscape import MonthlyLandscape
+from src.monthlyLandscape import MonthlyLandscape
 
 CALENDAR_TYPES = {'MonthlyLandscape': MonthlyLandscape}
 
@@ -27,7 +27,7 @@ def main(args):
     calendarCollection = makeCalendarCollection(args)
     docs = [x.makeDocument() for x in calendarCollection]
     composer = mergeDocuments(docs)
-    composer.save(args.filename + '.docx')
+    composer.save("output/" + args.filename + '.docx')
 
 if __name__ == "__main__":
     assert CALENDAR_TYPES

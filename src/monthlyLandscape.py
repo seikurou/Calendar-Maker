@@ -1,8 +1,8 @@
 from docx import Document
 from datetime import date as Date
-from calendar import Calendar, MonthlyCalendar
+from src.calendar import Calendar, MonthlyCalendar
 
-TEMPLATE = 'MonthlyLandscape.docx'
+TEMPLATE = 'templates/MonthlyLandscape.docx'
 WEEK_LABELS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
