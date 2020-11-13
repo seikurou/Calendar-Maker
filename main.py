@@ -19,13 +19,14 @@ def mergeDocuments(documents):
     if not documents:
         return
     composer = Composer(documents[0])
-    for doc in range(1, len(documents)):
-        composer.append(doc)
+    for i in range(1, len(documents)):
+        composer.append(documents[i])
     return composer
 
 def main(args):
     calendarCollection = makeCalendarCollection(args)
-    composer = mergeDocuments([x.makeDocument() for x in calendarCollection])
+    docs = [x.makeDocument() for x in calendarCollection]
+    composer = mergeDocuments(docs)
     composer.save(args.filename + '.docx')
 
 if __name__ == "__main__":
@@ -35,13 +36,13 @@ if __name__ == "__main__":
                     help='Type of calendar',)
     parser.add_argument('--year', type=int, nargs=1, default=2020,
                                         help='Start year')
-    parser.add_argument('--month', type=int, nargs=1, default=1,
+    parser.add_argument('--month', type=int, nargs=1, default=11,
                                         help='Start month')
     parser.add_argument('--day', type=int, nargs=1, default=1,
                                         help='Start day')
     parser.add_argument('--cnt', type=int, nargs=1, default=2,
                                         help='Number of calendars')
-    parser.add_argument('--startday', type=str, nargs=1, default=6,
+    parser.add_argument('--startday', type=str, nargs=1, default=4,
                                         help='For monthly/weekly calendars, the day on which to start, default Sunday (6). Mon, Tues, Wed... is 0, 1, 2...',
                                         choices=[0, 1, 2, 3, 4, 5, 6])
     parser.add_argument('--filename', type=str, nargs=1, default='calendar',
