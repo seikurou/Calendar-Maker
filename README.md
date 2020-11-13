@@ -1,6 +1,6 @@
 # Calendar-Maker
 
-Inspired by <a href=calendarsthatwork.com>Calendars That Work</a>
+Inspired by <a href="https://calendarsthatwork.com" target="_blank">Calendars That Work</a>
 
 Allows you to create printable calendars in the docx format.
 
