@@ -1,13 +1,13 @@
 import argparse
 from docx import Document
 from docxcompose.composer import Composer
-from datetime import date, deltatime
+from datetime import date as Date
 
 CALENDAR_TYPES = {'MonthlyLandscape': MonthlyLandscape}
 
 def makeCalendarCollection(args):
     Calendar = CALENDAR_TYPES[args.type]
-    currDate = date(args.year, args.month, args.day)
+    currDate = Date(args.year, args.month, args.day)
     calendarCollection = []
     for i in range(args.cnt):
         calendarCollection.append(Calendar(currDate))
