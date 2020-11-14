@@ -2,16 +2,16 @@ from docx import Document
 from datetime import date as Date
 from src.calendar import Calendar, MonthlyCalendar
 
-TEMPLATE = 'templates/MonthlyLandscape.docx'
+TEMPLATE_PATH = 'templates/'
 WEEK_LABELS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
 class MonthlyLandscape(MonthlyCalendar):
-    def __init__(self, date: Date, start_day: int=6, **kargs):
-        super().__init__(date, start_day)
+    def __init__(self, date: Date, template: str, start_day: int=6, **kargs):
+        super().__init__(date, template, start_day)
 
     def makeDocument(self) -> Document:
-        document = Document(TEMPLATE)
+        document = Document(TEMPLATE_PATH + self._template)
         self._labelTitle(document)
         self._labelWeeks(document)
         self._labelDays(document)
