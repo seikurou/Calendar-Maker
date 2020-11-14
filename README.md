@@ -8,11 +8,6 @@ Allows you to create printable calendars in the docx format.
 usage: main.py [-h] [--template {MonthlyLandscape.docx,WeeklyPortrait.docx}]
                [--year YEAR] [--month MONTH] [--day DAY] [--cnt CNT]
                [--start_day {0,1,2,3,4,5,6}] [--filename FILENAME]
-main.py: error: unrecognized arguments: asd
-PS C:\Users\edmon\Desktop\Calendar-Maker> python .\main.py -h
-usage: main.py [-h] [--template {MonthlyLandscape.docx,WeeklyPortrait.docx}]
-               [--year YEAR] [--month MONTH] [--day DAY] [--cnt CNT]
-               [--start_day {0,1,2,3,4,5,6}] [--filename FILENAME]
 
 Create printable calendars.
 
