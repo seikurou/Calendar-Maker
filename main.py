@@ -11,7 +11,7 @@ def makeCalendarCollection(args):
     currDate = Date(args.year, args.month, args.day)
     calendarCollection = []
     for i in range(args.cnt):
-        calendarCollection.append(Calendar(currDate))
+        calendarCollection.append(Calendar(currDate, **vars(args)))
         currDate = Calendar.nextDate(currDate)
     return calendarCollection
 
@@ -42,7 +42,7 @@ if __name__ == "__main__":
                                         help='Start day')
     parser.add_argument('--cnt', type=int, nargs=1, default=2,
                                         help='Number of calendars')
-    parser.add_argument('--startday', type=str, nargs=1, default=4,
+    parser.add_argument('--start_day', type=str, nargs=1, default=6,
                                         help='For monthly/weekly calendars, the day on which to start, default Sunday (6). Mon, Tues, Wed... is 0, 1, 2...',
                                         choices=[0, 1, 2, 3, 4, 5, 6])
     parser.add_argument('--filename', type=str, nargs=1, default='calendar',
