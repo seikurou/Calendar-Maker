@@ -2,9 +2,11 @@ import argparse
 from docx import Document
 from docxcompose.composer import Composer
 from datetime import date as Date
-from src.monthlyLandscape import MonthlyLandscape
-from src.weeklyPortrait import WeeklyPortrait
+import os
+from .src.monthlyLandscape import MonthlyLandscape
+from .src.weeklyPortrait import WeeklyPortrait
 
+OUTPUT_DIR = './mysite/cal_maker/output/'
 CALENDAR_TYPES = {'MonthlyLandscape.docx': MonthlyLandscape,
                     'WeeklyPortrait.docx': WeeklyPortrait}
 
@@ -29,7 +31,10 @@ def main(args):
     calendarCollection = makeCalendarCollection(args)
     docs = [x.makeDocument() for x in calendarCollection]
     composer = mergeDocuments(docs)
-    composer.save("output/" + args.filename)
+    composer.save(OUTPUT_DIR + args.filename)
+
+def make_calendar(args):
+    main(args)
 
 if __name__ == "__main__":
     assert CALENDAR_TYPES

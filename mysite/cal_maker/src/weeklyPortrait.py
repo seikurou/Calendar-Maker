@@ -1,8 +1,8 @@
 from docx import Document
 from datetime import date as Date
-from src.calendar import Calendar, WeeklyCalendar
+from .calendar import Calendar, WeeklyCalendar
 
-TEMPLATE_PATH = 'templates/'
+TEMPLATE_PATH = './mysite/cal_maker/templates/'
 
 class WeeklyPortrait(WeeklyCalendar):
     def __init__(self, date: Date, template: str, start_day: int=6, **kargs):

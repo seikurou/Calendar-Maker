@@ -1,8 +1,8 @@
 from docx import Document
 from datetime import date as Date
-from src.calendar import Calendar, MonthlyCalendar
+from .calendar import Calendar, MonthlyCalendar
 
-TEMPLATE_PATH = 'templates/'
+TEMPLATE_PATH = './mysite/cal_maker/templates/'
 WEEK_LABELS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
