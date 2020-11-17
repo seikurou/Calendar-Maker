@@ -6,7 +6,7 @@ import os
 from .src.monthlyLandscape import MonthlyLandscape
 from .src.weeklyPortrait import WeeklyPortrait
 
-OUTPUT_DIR = './mysite/cal_maker/output/'
+OUTPUT_DIR = './Calendar-Maker/mysite/cal_maker/output/'
 CALENDAR_TYPES = {'MonthlyLandscape.docx': MonthlyLandscape,
                     'WeeklyPortrait.docx': WeeklyPortrait}
 

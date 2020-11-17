@@ -1,8 +1,7 @@
 from docx import Document
 from datetime import date as Date
-from .calendar import Calendar, MonthlyCalendar
+from .calendar import Calendar, MonthlyCalendar, TEMPLATE_PATH
 
-TEMPLATE_PATH = './mysite/cal_maker/templates/'
 WEEK_LABELS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
@@ -19,14 +18,14 @@ class MonthlyLandscape(MonthlyCalendar):
 
     def _labelTitle(self, document: Document) -> None:
         document.paragraphs[0].runs[0].clear().add_text('{0:%B} {0:%Y}'.format(self._date))
-    
+
     def _labelWeeks(self, document: Document) -> None:
         start_day = self._start_day
         for col in range(7):
             cell = document.tables[0].cell(0, col)
             cell.paragraphs[0].runs[0].clear().add_text(WEEK_LABELS[start_day])
             start_day = (start_day + 1) % 7
-    
+
     def _labelDays(self, document: Document) -> None:
         currDate = Date(self._date.year, self._date.month, 1)
         firstWeekday = currDate.weekday() # weekday of the 1st. ex Jan 1 is on a Monday = (0)

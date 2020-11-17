@@ -1,11 +1,13 @@
 from datetime import date as Date, timedelta
 from docx import Document
 
+TEMPLATE_PATH = './Calendar-Maker/mysite/cal_maker/templates/'
+
 class Calendar:
     def __init__(self, date: Date, template: str):
         self._date = date
         self._template = template
-    
+
     @staticmethod
     def nextDate(date: Date) -> Date:
         """
@@ -14,7 +16,7 @@ class Calendar:
         `date` with a `month` of February of the same `year`, with an arbitrary `day`.
         """
         return date
-    
+
     def makeDocument(self) -> Document:
         """
         Returns a docx `Document` containing a single calendar of the specified parameters
@@ -35,7 +37,7 @@ class MonthlyCalendar(Calendar):
     def __init__(self, date: Date, template: str, start_day: int=6):
         super().__init__(date, template)
         self._start_day = start_day
-    
+
     @staticmethod
     def nextDate(date: Date) -> Date:
         if date.month == 12:
@@ -48,14 +50,14 @@ class WeeklyCalendar(Calendar):
         super().__init__(date, template)
         self._start_day = start_day
         self.setStartEndDate()
-    
+
     def setStartEndDate(self) -> None:
         date = self._date
         while date.weekday() != self._start_day:
             date = Calendar.prevDay(date)
         self._date_start = date
         self._date_end = date + timedelta(days=6)
-    
+
     @staticmethod
     def nextDate(date: Date) -> Date:
         return date + timedelta(days=7)
@@ -63,7 +65,7 @@ class WeeklyCalendar(Calendar):
 class YearlyCalendar(Calendar):
     def __init__(self, date, template: str):
         super().__init__(date, template)
-    
+
     @staticmethod
     def nextDate(date: Date) -> Date:
         return Date(date.year + 1, date.month, 1)

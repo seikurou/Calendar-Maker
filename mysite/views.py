@@ -14,7 +14,7 @@ class Arg:
         self.cnt = params['cnt']
         self.start_day = params['start_day']
         self.filename = 'calendar' + (str)((int)(time.time()*1000)) + '.docx'
-        
+
 
 def make_calendar_view(request):
     try:
@@ -26,16 +26,17 @@ def make_calendar_view(request):
     return JsonResponse({"link":args.filename})
 
 def get_file(request, file_name):
+    # print(os.getcwd())
     # return HttpResponse("File.")
     fpath = OUTPUT_DIR + file_name
-    # file = open(fpath, 'r') 
+    # file = open(fpath, 'r')
     f = open(fpath, 'rb')
     response = FileResponse(f)
     response['Content-Disposition'] = "attachment; filename=%s" %file_name
     response['Content-Length'] = os.path.getsize(fpath)
     return response
 
- 
+
 # def download_file(request):
 #     # fill these variables with real values
 #     fl_path = ‘/file/path'

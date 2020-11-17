@@ -1,8 +1,8 @@
 from docx import Document
 from datetime import date as Date
-from .calendar import Calendar, WeeklyCalendar
+from .calendar import Calendar, WeeklyCalendar, TEMPLATE_PATH
 
-TEMPLATE_PATH = './mysite/cal_maker/templates/'
+
 
 class WeeklyPortrait(WeeklyCalendar):
     def __init__(self, date: Date, template: str, start_day: int=6, **kargs):
@@ -16,7 +16,7 @@ class WeeklyPortrait(WeeklyCalendar):
 
     def _labelTitle(self, document: Document) -> None:
         document.paragraphs[0].runs[0].clear().add_text('{0:%b} {0:%d}, {0:%Y}—{1:%b} {1:%d}, {1:%Y}'.format(self._date_start, self._date_end))
-    
+
     def _labelDays(self, document: Document) -> None:
         currDate = self._date_start
         for r in range(7):
